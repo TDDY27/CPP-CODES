@@ -5,27 +5,27 @@
 using namespace std;
 
 int t,n,a,ans,same1,same2,frnt;
+vector <int> v;
 
 signed main(){
     TDDY
     cin>>t;
     while(t>0){
         cin>>n;
-        vector <int> v;
+        v.clear();
         ans=0;
         same1=0;
-        same2=0;
+        same2=-1;
 
         for(int i=0;i<n;i++){
             cin>>a;
-            int near=1;
             while(v.size()>0){
                 if(a>v.back()){
                     ans++;
                     v.pop_back();
-                    near++;
                     if(a>same2)same1=0;
                 }else if(a==v.back()){
+                    if(a<same)
                     same2=a;
                     if(same1==0) frnt=v.size();
                     same1++;
@@ -34,7 +34,7 @@ signed main(){
                     //cout<<same1<<endl;
                     break;
                 }else{
-                    if(near==1)ans++;
+                    ans++;
                     break;
                 }
             }
@@ -46,3 +46,4 @@ signed main(){
     }
 
 }
+// 遇到相等的case會bug 尤其是相等夾相等的case  ex 2 2 2 1 1 1 、2 2 1 1 2 2 、 2 2 2 1 1 1 2 2 2
