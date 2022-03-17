@@ -15,12 +15,12 @@ signed main(){
     TDDY
     cin>>n;
 
-    node now;
-    now.pr=NULL; now.lc=NULL; now.rc=NULL; now.ind=-1;
-    node root;
+    node *now;
+    now->pr=NULL; now->lc=NULL; now->rc=NULL; now->ind=-1;
+    node *root;
 
     cin>>k;
-    root.ind=k; root.pr=NULL; root.lc=NULL; root.rc=NULL;
+    root->ind=k; root->pr=NULL; root->lc=NULL; root->rc=NULL;
     now=root;
 
     for(int i=0;i<n;i++){
@@ -30,11 +30,13 @@ signed main(){
         temp->lc=NULL;
         temp->rc=NULL;
 
-        if(k<now.ind){
-            temp->pr=&now;
-            now.lc=temp;
-            now->lc; // 不知道出了甚麼bug
+        if(k<now->ind){
+            temp->pr=now;
+            now->lc=temp;
+            *now->lc;
         }else{
+            while()
         }
     }
 }
+// https://dotblogs.com.tw/j883988/2013/11/15/129675
