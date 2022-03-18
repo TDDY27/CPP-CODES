@@ -12,9 +12,9 @@ struct node{
 
 void dfs( node *nd){
     if(nd->lc!=NULL) dfs(nd->lc);
-    cout<<nd->ind<<endl;
-    if(nd->rc!=NULL) dfs(nd->rc);
     //cout<<nd->ind<<endl;
+    if(nd->rc!=NULL) dfs(nd->rc);
+    cout<<nd->ind<<endl;
 }
 
 signed main(){
@@ -57,7 +57,7 @@ signed main(){
 	    now=now->rc;
 	    if(k > Rroot->ind) Rroot=now;
         }
-        cout<<now->ind<<" "<<now->lc<<" "<<now->rc<<" "<<now->pr<<endl;
+        //cout<<now->ind<<" "<<now->lc<<" "<<now->rc<<" "<<now->pr<<endl;
     }
     dfs(root);
 }
