@@ -11,10 +11,10 @@ struct node{
 };
 
 void dfs( node *nd){
-	if(nd->lc!=NULL) dfs(nd->lc);
+    if(nd->lc!=NULL) dfs(nd->lc);
     cout<<nd->ind<<endl;
-	if(nd->rc!=NULL) dfs(nd->rc);
-	//cout<<nd->ind<<endl;
+    if(nd->rc!=NULL) dfs(nd->rc);
+    //cout<<nd->ind<<endl;
 }
 
 signed main(){
@@ -22,13 +22,13 @@ signed main(){
     cin>>n;
 
     node *now=new node;
-	node *root=new node;
- 	node *Rroot=new node;
+    node *root=new node;
+    node *Rroot=new node;
 
     cin>>k;
     root->ind=k; root->pr=NULL; root->lc=NULL; root->rc=NULL;
     now=root;
-	Rroot=root;
+    Rroot=root;
 
     for(int i=0;i<n-1;i++){
         cin>>k;
@@ -36,29 +36,28 @@ signed main(){
         temp->ind=k;
         temp->lc=NULL;
         temp->rc=NULL;
-	 	if(k<now->ind){
-			temp->pr=now;
-			now->lc=temp;
-			now=now->lc;
-	 	}else{
-			node *anc=new node;
-			if(now!=Rroot)anc=now->pr;
-			else anc=now;
-			while( k> anc->ind && now!=Rroot){
-				if(anc==Rroot){
-					now=now->pr;
-					break;
-				}
-				now=now->pr;
-				anc=now->pr;
-			}
-			temp->pr=now;
-			now->rc=temp;
-			now=now->rc;
-			if(k > Rroot->ind) Rroot=now;
+	if(k<now->ind){
+	    temp->pr=now;
+	    now->lc=temp;
+	    now=now->lc;
+ 	}else{
+	    node *anc=new node;
+	    if(now!=Rroot)anc=now->pr;
+	        else anc=now;
+		while( k> anc->ind && now!=Rroot){
+		    if(anc==Rroot){
+			now=now->pr;
+			break;
+   		    }
+		    now=now->pr;
+   	 	    anc=now->pr;
 		}
-		cout<<now->ind<<" "<<now->lc<<" "<<now->rc<<" "<<now->pr<<endl;
+		temp->pr=now;
+		now->rc=temp;
+		now=now->rc;
+		if(k > Rroot->ind) Rroot=now;
+        }
+        cout<<now->ind<<" "<<now->lc<<" "<<now->rc<<" "<<now->pr<<endl;
     }
-	dfs(root);
+    dfs(root);
 }
-// https://dotblogs.com.tw/j883988/2013/11/15/129675
