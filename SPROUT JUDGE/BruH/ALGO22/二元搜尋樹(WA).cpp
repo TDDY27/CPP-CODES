@@ -43,19 +43,19 @@ signed main(){
  	}else{
 	    node *anc=new node;
 	    if(now!=Rroot)anc=now->pr;
-	        else anc=now;
-		while( k> anc->ind && now!=Rroot){
-		    if(anc==Rroot){
-			now=now->pr;
-			break;
-   		    }
-		    now=now->pr;
-   	 	    anc=now->pr;
-		}
-		temp->pr=now;
-		now->rc=temp;
-		now=now->rc;
-		if(k > Rroot->ind) Rroot=now;
+	    else anc=now;
+	    while( k> anc->ind && now!=Rroot){
+	        if(anc==Rroot){
+	       	    now=now->pr;
+		    break;
+   		}
+		now=now->pr;
+   	        anc=now->pr;
+	    }
+	    temp->pr=now;
+	    now->rc=temp;
+	    now=now->rc;
+	    if(k > Rroot->ind) Rroot=now;
         }
         cout<<now->ind<<" "<<now->lc<<" "<<now->rc<<" "<<now->pr<<endl;
     }
