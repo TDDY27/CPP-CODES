@@ -8,8 +8,8 @@ int t,n;
 float f[20][3];
 
 float func(int ind){
-	float maxn=0;
-	for(int i=1;i<=n;i++) maxn=max( maxn, f[i][0]*(ind-f[i][1])*(ind-f[i][1])+f[i][2] ) ;
+    float maxn=0;
+    for(int i=1;i<=n;i++) maxn=max( maxn, f[i][0]*(ind-f[i][1])*(ind-f[i][1])+f[i][2] ) ;
     return maxn;
 }
 
@@ -27,26 +27,26 @@ float ter(){
             fd=fc;
             fc=fa+(fd-fa)*2/3;
             fb=fa+(fd-fa)*1/3;
-		}else if( func(fb)==func(fc) ){
+        }else if( func(fb)==func(fc) ){
             fa=fb;
             fd=fc;
             fc=fa+(fd-fa)*2/3;
             fb=fa+(fd-fa)*1/3;
-		}
-		k--;
+	}
+	k--;
     }
     return func((fb+fc)/2);
 }
 
 signed main(){
-	TDDY
+    TDDY
     cin>>t;
     while(t>0){
         memset(f,0,sizeof(f));
 
         cin>>n;
         for(int i=1;i<=n;i++) cin>>f[i][0]>>f[i][1]>>f[i][2];
-		cout<<setprecision(17)<<ter()<<endl;
+	cout<<setprecision(17)<<ter()<<endl;
 
         t--;
     }
