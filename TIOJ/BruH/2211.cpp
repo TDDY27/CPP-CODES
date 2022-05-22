@@ -23,8 +23,7 @@ signed main() {
     }
 
     int now,val;
-    now=(k+1)%n;
-    if(now==0) now=n;
+    now=k+1;
     while(true){
         val=Query(1,now);
         if(val==1) break;
