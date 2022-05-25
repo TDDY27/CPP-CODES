@@ -50,7 +50,6 @@ signed main(){
     for(int i=1;i<=n;i++){
         if(ABR[i][1]!=CR[i][1]){ flag=0; break;}
     }
-    if(flag==0) cout<<"No";
-    else cout<<"Yes";
-
+    if(flag==0) cout<<"No"<<endl;
+    else cout<<"Yes"<<endl;
 }
