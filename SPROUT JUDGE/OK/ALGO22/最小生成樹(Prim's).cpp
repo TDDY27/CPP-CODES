@@ -27,9 +27,8 @@ int Prim(){
         if(vis[now.v]) continue;
         vis[now.v]=1;
         ans+=now.w;
-        pii mmin; mmin.w=INF;
         for(pii i:G[now.v])
-            if(!vis[i.v] ){ mmin=i; pq.push(mmin); }
+            if(!vis[i.v] ) pq.push(i);
     }
     return ans;
 }
