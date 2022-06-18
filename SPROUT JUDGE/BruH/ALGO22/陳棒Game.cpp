@@ -22,9 +22,10 @@ void update(int l,int r,int cur,int val,int Res){
     seg[cur].res=Res;
 
     val%=3;
-    while(val--){
+    while(val){
         swap(seg[cur].n1, seg[cur].n2);
         swap(seg[cur].n1, seg[cur].n3);
+        val--;
     }
     seg[cur].lazt+=val, seg[cur].lazt%=3;
 }
@@ -33,7 +34,7 @@ void push(int l,int r,int cur){
     int mid=(l+r)/2;
     update(l,mid,cur*2, seg[cur].lazt, seg[cur].res);
     update(mid+1,r,cur*2+1, seg[cur].lazt, seg[cur].res);
-    seg[cur].lazt=0;
+    seg[cur].lazt=0, seg[cur].res=0;
 }
 
 void pull(int cur){
@@ -91,9 +92,9 @@ signed main(){
         if(Q[0]=='T') turn(1,n,a,b,1);
         else if(Q[0]=='R') reset(1,n,a,b,1);
         else cout<<query(1,n,a,b,1)<<endl;
-        cout<<seg[1].n1<<" "<<seg[1].n2<<" "<<seg[1].n3<<endl;
-        /*cout<<seg[2].n1<<" "<<seg[2].n2<<" "<<seg[2].n3<<endl;
-        cout<<seg[3].n1<<" "<<seg[3].n2<<" "<<seg[3].n3<<endl;*/
+        //cout<<seg[1].n1<<" "<<seg[1].n2<<" "<<seg[1].n3<<endl;
+        //cout<<seg[2].n1<<" "<<seg[2].n2<<" "<<seg[2].n3<<endl;
+        //cout<<seg[3].n1<<" "<<seg[3].n2<<" "<<seg[3].n3<<endl;
     }
 
 }
