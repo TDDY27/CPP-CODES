@@ -22,10 +22,10 @@ void update(int l,int r,int cur,int val,int Res){
     seg[cur].res=Res;
 
     val%=3;
-    while(val){
+    int tmp=val;
+    while(tmp--){
         swap(seg[cur].n1, seg[cur].n2);
         swap(seg[cur].n1, seg[cur].n3);
-        val--;
     }
     seg[cur].lazt+=val, seg[cur].lazt%=3;
 }
