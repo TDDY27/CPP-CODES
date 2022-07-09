@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #define TDDY ::ios_base::sync_with_stdio(false);
+#define int long long
 
 using namespace std;
 
@@ -20,6 +21,7 @@ signed main(){
     for(int i=1;i<=n;i++) cin>>bw[i]>>bv[i];
     for(int i=1;i<=m;i++) cin>>aw[0][i]>>aw[1][i]>>av[i];
 
+
     for(int i=1;i<=n;i++){
         for(int j=c;j>=bw[i];j--){
             if(dpb[j]<dpb[j-bw[i]]+bv[i]){
@@ -27,24 +29,27 @@ signed main(){
                 if(rcb[j-bw[i]]) rcb[j]=rcb[j-bw[i]];
                 else if(j-bw[i]==0) rcb[j]=1;
             }else if(dpb[j]==dpb[j-bw[i]]+bv[i]){
-                rcb[j]+=rcb[j-bw[i]];
+                rcb[j]= (rcb[j]+rcb[j-bw[i]] )%mod;
             }
         }
-
     }
 
     for(int i=1;i<=m;i++){
-        for(int j=aw[0][i];j<=c;j++)
-            arr[j]=dpa[j-aw[0][i]];
-        for(int )
-        for(int j=aw[1][i]+aw[0][i];j<=c;j++){
-            if(dpa[j]<arr[j-aw[1][i]]+av[i]){
+        for(int j=aw[0][i];j<=c;j++) arr[j]=dpa[j-aw[0][i]];
+
+        for(int j=0;j<=c;j++){
+            if(dpa[j]==dpa[j-aw[0][i]] && j<=aw[0][i]){
+                if(rca[j-aw[0][i]]) rca[j]= (rca[j]+rca[j-aw[0][i]] )%mod;
+                else rca[j]=1;
+            }
+
+            if(dpa[j]<arr[j-aw[1][i]]+av[i] && j>=aw[1][i]+aw[0][i]){
                 dpa[j]=arr[j-aw[1][i]]+av[i];
                 arr[j]=dpa[j];
                 if(rca[j-aw[1][i]]) rca[j]=rca[j-aw[1][i]];
                 else rca[j]=1;
-            }else if(dpa[j]==arr[j-aw[1][i]]+av[i]){
-                rca[j]+=rca[j-aw[1][i]];
+            }else if(dpa[j]==arr[j-aw[1][i]]+av[i] && j>=aw[1][i]+aw[0][i]){
+                rca[j]= (rca[j]+rca[j-aw[1][i]] )%mod;
             }
         }
     }
@@ -64,6 +69,6 @@ signed main(){
             waya+=rca[i];
         }
     }
-    cout<<ansb<<" "<<wayb<<endl;
+
 }
 
