@@ -18,7 +18,7 @@ int query(int pos){
 int who(int pos){
     int sum=0, per=0;
     for(int i=1<<17; i>=1; i>>=1 ){
-        if(per+i<maxn && sum+bit[per+i]<pos){ sum+=bit[i], per+=i; }
+        if(per+i<maxn && sum+bit[per+i]<pos){ sum+=bit[per+i], per+=i; }
     }
     return per+1;
 }
