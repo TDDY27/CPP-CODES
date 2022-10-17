@@ -14,8 +14,7 @@ int mch(int n,int t){
 }
 
 int BS(int n,int t){
-    int l=0, r=1e18/n, mid;
-    r+=r/n;
+    int l=0, r=1e18/n+1e9, mid;
     while(l<r){
         mid=(l+r)/2;
         if(mch(n,mid)<t) l=mid+1;
@@ -30,4 +29,3 @@ signed main(){
     for(int i=0;i<n;i++) cin>>k[i];
     cout<<BS(n,t);
 }
-// reference from thanksone
