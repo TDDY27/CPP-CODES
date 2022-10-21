@@ -14,9 +14,8 @@ signed main(){
     int l=0,r=0,sum=arr[0],ans=0;
     while(r<n){
         if(sum==x) ans++;
-        r++;
-        sum+=arr[r];
+        sum+=arr[++r];
         while(sum>x && l<r) sum-=arr[l++];
     }
-    cout<<ans<<endl;
+    cout<<ans<<"\n";
 }
